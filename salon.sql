@@ -71,6 +71,18 @@ CREATE TABLE staff(
 	FOREIGN KEY(manage_id) REFERENCES management(manage_id)
 );	
 
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+/* LOOK HERE */
+/* Add more employees to these tables 
+
+- In each insert
+	The manager_id must MATCH
+	The clock_in and clock_out times
+	must be CONSISTENT
+
+*/
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 
 INSERT INTO staff VALUES
 	('W12973', 'Shira', 'Jones', 30300.50, 'M118', 'Cashier', '080000', '130000'),
@@ -217,3 +229,4 @@ END;
 CALL showOrderTotals();
 
 SELECT * FROM products;
+
