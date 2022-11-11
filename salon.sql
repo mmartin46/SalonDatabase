@@ -41,6 +41,10 @@ CREATE TABLE salon(
 INSERT INTO salon VALUES
 	('S172', 'Curls of Curls', 'Austin', 'TX'),
 	('S178', 'Hair Fundamemtals', 'Dallas', 'TX');
+	('S129', 'Full of Coils', 'New Orleans', 'LA'),
+	('S236', 'Olive Sisters', 'Bossier City', 'LA'); 
+	
+SELECT * FROM salon;
 
 CREATE TABLE management(
 	manage_id		VARCHAR(5) PRIMARY KEY,
@@ -52,6 +56,8 @@ CREATE TABLE management(
 INSERT INTO management VALUES
 	('M118', 'Samuel Parker', 'S172'),
 	('M184', 'Jones Coins', 'S178');
+	('M923', 'Pauline Sam', 'S129'),
+	('M912', 'Michelle Pink', 'S236');
 
 CREATE TABLE staff(
 	staff_id			VARCHAR(10) PRIMARY KEY,
@@ -60,19 +66,55 @@ CREATE TABLE staff(
 	salary			DOUBLE DEFAULT 29500 CHECK (salary <= 100000),
 	manage_id		VARCHAR(5),
 	job_pos			VARCHAR(20),
-	start_at			TIME,
-	finish_by		TIME,
+	clock_in			TIME,
+	clock_out		TIME,
 	FOREIGN KEY(manage_id) REFERENCES management(manage_id)
 );	
 
 
 INSERT INTO staff VALUES
-	('W11958', 'Pauline', 'Georgia', 25899.99, 'M118', 'Cleaner', '080000', '120000'),
 	('W12973', 'Shira', 'Jones', 30300.50, 'M118', 'Cashier', '080000', '130000'),
-	('W29392', 'Yira', 'Prone', 32000.99, 'M184', 'Cashier', '120000', '150000'),
-	('W28989', 'Launa', 'Prone', 31900.99, 'M184', 'Stocker', '090000', '110000'),
+	('W11958', 'Pauline', 'Georgia', 25899.99, 'M118', 'Cleaner', '080000', '120000'),
 	('W83244', 'George', 'Paul', 34000.99, 'M118', 'Cleaner', '130000', '160000'),
-	('W83423', 'Leo', 'Talker', 40500.00, 'M184', 'Stocker', '120000', '160000'); 
+	('W82338', 'Mark', 'Josh', 60000.00, 'M118', 'Jr. Manager', '080000', '130000'),
+	('W93298', 'Elizabeth', 'Park', 62000.00, 'M118', 'Jr. Manager', '130000', '160000');
+
+	
+INSERT INTO staff VALUES
+	('W43942', 'Yonder', 'Kandle', 61000.00, 'M184', 'Jr. Manager', '080000', '120000'),
+	('W23932', 'Beth', 'Kindle', 63000.00, 'M184', 'Jr. Manager', '120000', '150000'),
+	('W83923', 'Merlin', 'Tree', 35000.00, 'M184', 'Cashier', '080000', '120000'),
+	('W29392', 'Yira', 'Prone', 32000.99, 'M184', 'Cashier', '120000', '150000'),
+	('W83423', 'Leo', 'Talker', 40500.00, 'M184', 'Stocker', '120000', '150000'),
+	('W28989', 'Launa', 'Prone', 31900.99, 'M184', 'Stocker', '080000', '110000'),
+	('W89123', 'Rema', 'Crystal', 45000.00, 'M184', 'Stylist', '080000', '120000'),
+	('W93288', 'Paula', 'Orlando', 42000.00, 'M184', 'Stylist', '120000', '150000'); 
+
+
+SELECT * FROM staff;
+	
+INSERT INTO staff VALUES
+	('W98238', 'Monice', 'Booker', 28330.99, 'M923', 'Cashier', '070000', '110000'),
+	('W93287', 'Panya', 'Martinez', 31000.99, 'M923', 'Cashier', '110000', '170000'),
+	('W54430', 'Karly', 'Paula', 29500.99, 'M923', 'Stocker', '070000', '110000'),
+	('W68963', 'Willow', 'Johnson', 30500.00, 'M923', 'Stocker', '110000', '170000'),
+	('W92743', 'Laura', 'Penny', 60500.00, 'M923', 'Jr. Manager', '070000', '130000'),
+	('W49823', 'Perine', 'Penson', 55000.00, 'M923', 'Jr. Manager', '130000', '170000'),
+	('W92492', 'Lizz', 'Karline', 45000.00, 'M923', 'Stylist', '070000', '110000'),
+	('W38923', 'Grace', 'Harline', 42000.00, 'M923', 'Stylist', '110000', '170000');
+	
+INSERT INTO staff VALUES
+	('W93293', 'Georgia', 'Bensen', 29000.00, 'M912', 'Cashier', '070000', '120000'),
+	('W32878', 'Jessica', 'Pauline', 35000.00, 'M912', 'Cashier', '120000', '150000'),
+	('W43932', 'Havanna', 'Brace', 33000.00, 'M912', 'Cleaner', '070000', '120000'),
+	('W83231', 'Kora', 'Mauren', 34000.00, 'M912', 'Cleaner', '120000', '150000'),
+	('W83929', 'Laurna', 'Mist', 70000.00, 'M912', 'Jr. Manager', '070000', '120000'),
+	('W39232', 'Raula', 'Bail', 65000.00, 'M912', 'Jr. Manager', '120000', '150000'),
+	('W29393', 'Abagail', 'Rain', 40000.00, 'M912', 'Stylist', '070000', '120000'),
+	('W92833', 'Megan', 'Kite', 40000.00, 'M912', 'Stylist', '120000', '150000');  
+	
+SELECT * FROM staff
+WHERE manage_id = 'M184';
 
 
 CREATE TABLE product(
@@ -103,6 +145,21 @@ INSERT INTO product VALUES
 	('P9898', 'Argon Oil 3L', 30.99, 'B1893', 'S172'),
 	('P2387', 'Argon Oil 1L', 20.99, 'B1893', 'S178'),
 	('P8423', 'Argon Oil 2L', 25.99, 'B1893', 'S178');
+	('P9128', 'Lavendar Conditioner 1L', 20.99, 'B2323', 'S172'),
+	('P3826', 'Lavendar Conditioner 2L', 25.99, 'B2323', 'S172'),
+	('P2633', 'Lavendar Conditioner 1L', 20.99, 'B2323', 'S178'),
+	('P4842', 'Lavendar Conditioner 2L', 25.99, 'B2323', 'S178');
+	('P3278', 'Black Bean Mask', 2.99, 'B2109', 'S172'),
+	('P3623', 'Rosemary Wipe Mask', 1.99, 'B2323', 'S172'),
+	('P3923', 'Black Bean Mask', 3.99, 'B2109', 'S178'),
+	('P2923', 'Rosemary Wipe Mask', 2.99, 'B2323', 'S178');
+	('P3729', 'Sunflower Conditioner', 12.99, 'B1932', 'S172'),
+	('P8233', 'Blueberry Oil 1L', 5.99, 'B2109', 'S178'),
+	('P9472', 'Blueberry Oil 2L', 5.99, 'B2109', 'S172');
+	('P3293', 'Coconut Hair Styler', 10.99, 'B2109', 'S172'),
+	('P8443', 'Coconut Hair Styler', 10.99, 'B2109', 'S178'),	
+	('P2378', 'Blackberry Oil 1L', 5.99, 'B2109', 'S178'),
+	('P3287', 'Blackberry Oil 2L', 10.99, 'B2109', 'S172');
 
 SELECT * FROM product;
 
@@ -160,4 +217,3 @@ END;
 CALL showOrderTotals();
 
 SELECT * FROM products;
-
