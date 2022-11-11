@@ -12,8 +12,22 @@ INSERT INTO customer VALUES
 	('C89328', 'George', 'Timothy', 'N', 'O1128', '214-834-1108'),
 	('C94394', 'Paul', 'James', 'Y', 'O1198', '469-678-2183'),
 	('C89243', 'Simon', 'Carter', 'Y', 'O2132', '345-212-1232'),
-	('C72983', 'James', 'Patner', 'Y', 'O2321', '456-789-1109');
+	('C72983', 'James', 'Patner', 'Y', 'O2321', '456-789-1109'),
+	('C89243', 'Merlyn', 'Paula', 'N', 'O3923', '214-928-1000'),
+	('C94394', 'Kivy', 'Matt', 'Y', 'O4634', '548-128-2291'),
+	('C87323', 'Kite', 'Patty', 'N', 'O2321', '214-928-1099'),
+	('C23932', 'Monica', 'Kite', 'Y', 'O9899', '568-110-1189'),
+	('C49733', 'Hanna', 'Avery', 'Y', 'O7293', '938-129-4389'),
+	('C93922', 'Kevin', 'Parker', 'N', 'O7289', '458-109-9991');
 
+INSERT INTO customer VALUES
+	('C29737', 'Nicholas', 'Pager', 'Y', 'O8632', '542-017-1110'),
+	('C32932', 'Joshua', 'Peter', 'N', 'O6432', '456-690-1108'),
+	('C88988', 'Navish', 'Kendal', 'Y', 'O8348', '234-190-1190'),
+	('C93023', 'Grene', 'Leon', 'Y', 'O4932', '234-110-1108'),
+	('C23633', 'Tarks', 'Kole', 'N', 'O9328', '109-029-1129');
+
+SELECT * FROM customer;
 
 CREATE TABLE brand(
 	brand_id			VARCHAR(10) PRIMARY KEY,
@@ -172,6 +186,22 @@ INSERT INTO product VALUES
 	('P8443', 'Coconut Hair Styler', 10.99, 'B2109', 'S178'),	
 	('P2378', 'Blackberry Oil 1L', 5.99, 'B2109', 'S178'),
 	('P3287', 'Blackberry Oil 2L', 10.99, 'B2109', 'S172');
+	('P3290', 'Argon Oil 2L', 26.99, 'B1893', 'S129'),
+	('P9234', 'Argon Oil 3L', 31.99, 'B1893', 'S129'),
+	('P8348', 'Argon Oil 1L', 15.99, 'B1893', 'S236'),
+	('P8489', 'Argon Oil 2L', 26.99, 'B1893', 'S236'),
+	('P7210', 'Lavendar Conditioner 1L', 21.99, 'B2323', 'S129'),
+	('P8120', 'Lavendar Conditioner 2L', 24.99, 'B2323', 'S129'),
+	('P3682', 'Lavendar Conditioner 1L', 19.99, 'B2323', 'S236'),
+	('P0909', 'Lavendar Conditioner 2L', 24.99, 'B2323', 'S236'),
+	('P8323', 'Coconut Hair Styler', 11.99, 'B2109', 'S129'),
+	('P2337', 'Extra Virgin Olive Oil 1L', 21.99, 'B1182', 'S236'),
+	('P9324', 'Pure Olive Oil 1L', 14.99, 'B1932', 'S236'),
+	('P6238', 'Peeled Banana Mask', 3.99, 'B2109', 'S129'),
+	('P8239', 'Rosemary Wipe Mask', 4.99, 'B2323', 'S236'),
+	('P2364', 'Black Bean Mask', 3.99, 'B2109', 'S236'),
+	('P2632', 'Rosemary Wipe Mask', 3.99, 'B2323', 'S129'),
+	('P3792', 'Sunflower Conditioner', 11.99, 'B1932', 'S129');
 
 SELECT * FROM product;
 
@@ -214,6 +244,16 @@ INSERT INTO orders(order_id, product_id, salon_id, quantity) VALUES
 	('O1198', 'P5233', 'S178', 5),
 	('O2132', 'P5883', 'S178', 3),
 	('O2321', 'P9121', 'S172', 1);
+	('O4634', 'P8423', 'S178', 4),
+	('O4312', 'P3682', 'S236', 3),
+	('O3923', 'P8423', 'S178', 3),
+	('O9899', 'P8239', 'S236', 3),
+	('O7293', 'P7210', 'S129', 5),
+	('O7289', 'P9472', 'S172', 2);
+
+SELECT * FROM orders;
+
+
 
 /* Shows order prices */
 CREATE PROCEDURE showOrderTotals()
