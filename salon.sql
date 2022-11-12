@@ -45,9 +45,17 @@ INSERT INTO customer VALUES
 	('C09389', 'Simon', 'Carter', 'Y', 'O9271', '345-212-1232'),
 	('C10920', 'James', 'Patner', 'Y', 'O0917', '456-789-1109'),
 	('C09283', 'Merlyn', 'Paula', 'N', 'O3100', '214-928-1000');
-	
+	('C78833', 'Kernal', 'Brown', 'Y', 'O3400', '212-200-1009'),
+	('C73023', 'Barbara', 'Patt', 'N', 'O4001', '251-192-1092'),
+	('C63282', 'Kate', 'Patty', 'N', 'O9278', '213-198-1099'),
+	('C80000', 'Josh', 'Perry', 'Y', 'O0081', '461-198-1929'),
+	('C01797', 'Paren', 'Sore', 'N', 'O8009', '345-901-1029'),
+	('C67333', 'Jaren', 'Martinez', 'Y', 'O8371', '102-209-1029'),
+	('C89900', 'Lauren', 'Baker', 'N', 'O9291', '234-109-1109');
 
-SELECT * FROM customer;
+
+SELECT * FROM customer
+ORDER BY first_name;
 
 CREATE TABLE brand(
 	brand_id			VARCHAR(10) PRIMARY KEY,
@@ -284,9 +292,16 @@ INSERT INTO orders(order_id, product_id, salon_id, quantity) VALUES
 	('O0091','P7210','S129', 3),
 	('O9271','P8120','S129', 4),
 	('O0917','P3293','S172', 2),
-	('O3100','P3623','S172', 4);
+	('O3100','P3623','S172', 4),
+	('O3400','P5883','S178', 4),
+	('O4001','P8120','S129', 2),
+	('O9278','P3293','S172', 5),
+	('O0081','P5883','S178', 3),
+	('O8009','P2632','S129', 3),
+	('O8371','P5883','S178', 8),
+	('O9291','P6238','S129', 1);
 
-
+SELECT * FROM orders;
 
 /* Examples */
 
