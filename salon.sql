@@ -128,10 +128,13 @@ CREATE TABLE staff(
 
 INSERT INTO staff VALUES
 	('W12973', 'Shira', 'Jones', 30300.50, 'M118', 'Cashier', '080000', '130000'),
+	('W10929', 'Jesse', 'Hill', 30200.50, 'M118', 'Cashier', '130000', '160000'),
 	('W11958', 'Pauline', 'Georgia', 25899.99, 'M118', 'Cleaner', '080000', '120000'),
 	('W83244', 'George', 'Paul', 34000.99, 'M118', 'Cleaner', '130000', '160000'),
 	('W82338', 'Mark', 'Josh', 60000.00, 'M118', 'Jr. Manager', '080000', '130000'),
-	('W93298', 'Elizabeth', 'Park', 62000.00, 'M118', 'Jr. Manager', '130000', '160000');
+	('W93298', 'Elizabeth', 'Park', 62000.00, 'M118', 'Jr. Manager', '130000', '160000'),
+	('W93211', 'Kindel', 'Press', 45900.00, 'M118', 'Stylist', '080000', '130000'),
+	('W78238', 'Barbara', 'Cold', 45900.00, 'M118', 'Stylist', '130000', '160000'); 
 
 	
 INSERT INTO staff VALUES
@@ -341,4 +344,3 @@ END;
 CALL showOrderTotals();
 
 SELECT * FROM products;
-
