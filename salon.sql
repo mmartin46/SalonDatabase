@@ -237,27 +237,6 @@ CREATE TABLE orders(
 	FOREIGN KEY( salon_id ) REFERENCES salon( salon_id ) ON DELETE CASCADE
 );
 
-
-/* Examples */
-
-# Find all staff working for Jones Coins who have a salary
-# less than 35,000
-SELECT * FROM staff
-INNER JOIN management ON management.manage_id = staff.manage_id
-WHERE management.manager_name LIKE '%Coins' AND staff.salary < 35000;
-
-
-# Select all the products made by Jobo Bojo
-SELECT * FROM product
-INNER JOIN brand ON brand.brand_id = product.brand_id
-WHERE brand.brand_name LIKE '%Bojo%';
-
-
-/* check products from each branch */
-SELECT * FROM product
-INNER JOIN salon ON salon.salon_id = product.salon_id
-ORDER BY salon.salon_id; 
-
 /* Add orders */
 INSERT INTO orders(order_id, product_id, salon_id, quantity) VALUES
 	('O1128', 'P9121', 'S172', 2),
@@ -304,6 +283,29 @@ INSERT INTO orders(order_id, product_id, salon_id, quantity) VALUES
 	('O9271','P8120','S129', 4),
 	('O0917','P3293','S172', 2),
 	('O3100','P3623','S172', 4);
+
+
+
+/* Examples */
+
+# Find all staff working for Jones Coins who have a salary
+# less than 35,000
+SELECT * FROM staff
+INNER JOIN management ON management.manage_id = staff.manage_id
+WHERE management.manager_name LIKE '%Coins' AND staff.salary < 35000;
+
+
+# Select all the products made by Jobo Bojo
+SELECT * FROM product
+INNER JOIN brand ON brand.brand_id = product.brand_id
+WHERE brand.brand_name LIKE '%Bojo%';
+
+
+/* check products from each branch */
+SELECT * FROM product
+INNER JOIN salon ON salon.salon_id = product.salon_id
+ORDER BY salon.salon_id; 
+
 
 
 SELECT * FROM customer;
