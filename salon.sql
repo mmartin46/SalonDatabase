@@ -343,4 +343,13 @@ END;
 
 CALL showOrderTotals();
 
-SELECT * FROM products;
+CREATE PROCEDURE showBrandRevenue()
+BEGIN
+	SELECT brand_name, SUM(product.price) * orders.quantity FROM orders 
+	INNER JOIN product ON product.product_id = orders.product_id
+	INNER JOIN brand ON brand.brand_id = product.brand_id
+	GROUP BY brand_name;
+END;
+
+SELECT * FROM product;
+
