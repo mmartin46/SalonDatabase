@@ -8,22 +8,22 @@ CREATE TABLE customer(
 	phone_number		VARCHAR(16)
 );
 
+
 INSERT INTO customer VALUES
 	('C89328', 'George', 'Timothy', 'N', 'O1128', '214-834-1108'),
-	('C94394', 'Paul', 'James', 'Y', 'O1198', '469-678-2183'),
+	('C10901', 'Paul', 'James', 'Y', 'O1198', '469-678-2183'),
 	('C89243', 'Simon', 'Carter', 'Y', 'O2132', '345-212-1232'),
-	('C72983', 'James', 'Patner', 'Y', 'O2321', '456-789-1109'),
-	('C89243', 'Merlyn', 'Paula', 'N', 'O3923', '214-928-1000'),
+	('C89913', 'Merlyn', 'Paula', 'N', 'O3923', '214-928-1000'),
 	('C94394', 'Kivy', 'Matt', 'Y', 'O4634', '548-128-2291'),
 	('C87323', 'Kite', 'Patty', 'N', 'O2321', '214-928-1099'),
 	('C23932', 'Monica', 'Kite', 'Y', 'O9899', '568-110-1189'),
 	('C49733', 'Hanna', 'Avery', 'Y', 'O7293', '938-129-4389'),
-	('C93922', 'Kevin', 'Parker', 'N', 'O7289', '458-109-9991');
+	('C93922', 'Kevin', 'Parker', 'N', 'O7289', '458-109-9991'),
 	('C29737', 'Nicholas', 'Pager', 'Y', 'O8632', '542-017-1110'),
 	('C32932', 'Joshua', 'Peter', 'N', 'O6432', '456-690-1108'),
 	('C88988', 'Navish', 'Kendal', 'Y', 'O8348', '234-190-1190'),
 	('C93023', 'Grene', 'Leon', 'Y', 'O4932', '234-110-1108'),
-	('C23633', 'Tarks', 'Kole', 'N', 'O9328', '109-029-1129');
+	('C23633', 'Tarks', 'Kole', 'N', 'O9328', '109-029-1129'),
 	('C01192', 'Kardell', 'Link', 'Y', 'O3283', '101-117-1778'),
 	('C11872', 'Parker', 'Bill', 'Y', 'O7771', '213-120-9999'),
 	('C10182', 'Jones', 'Beav', 'N', 'O2812', '456-110-1098'),
@@ -34,7 +34,7 @@ INSERT INTO customer VALUES
 	('C82473', 'Leo', 'Bobs', 'N', 'O6531', '219-293-2821'),
 	('C80010', 'John', 'Gates', 'Y', 'O0110', '122-119-7800'),
 	('C90099', 'Jacob', 'Marker', 'Y', 'O8122', '271-192-1992'),
-	('C00182', 'Keyna', 'Barber', 'N', 'O3939', '217-182-1929');
+	('C00182', 'Keyna', 'Barber', 'N', 'O3939', '217-182-1929'),
 	('C10898', 'Patter', 'Jones', 'N', 'O6436', '283-239-1109'),
 	('C00991', 'Mario', 'Patterns', 'Y', 'O0922', '218-198-1900'),
 	('C00109', 'Luis', 'Jacob', 'N', 'O8393', '110-910-1101'),
@@ -74,7 +74,7 @@ CREATE TABLE salon(
 
 INSERT INTO salon VALUES
 	('S172', 'Curls of Curls', 'Austin', 'TX'),
-	('S178', 'Hair Fundamemtals', 'Dallas', 'TX');
+	('S178', 'Hair Fundamemtals', 'Dallas', 'TX'),
 	('S129', 'Full of Coils', 'New Orleans', 'LA'),
 	('S236', 'Olive Sisters', 'Bossier City', 'LA'); 
 	
@@ -89,7 +89,7 @@ CREATE TABLE management(
 
 INSERT INTO management VALUES
 	('M118', 'Samuel Parker', 'S172'),
-	('M184', 'Jones Coins', 'S178');
+	('M184', 'Jones Coins', 'S178'),
 	('M923', 'Pauline Sam', 'S129'),
 	('M912', 'Michelle Pink', 'S236');
 
@@ -185,27 +185,27 @@ INSERT INTO product VALUES
 	('P5923', 'Joboja Oil 1L', 7.99, 'B1932', 'S172'),
 	('P5233', 'Joboja Oil 2L', 14.99, 'B1932', 'S178'),
 	('P5883', 'Pure Jamaican Oil 1L', 5.99, 'B1932', 'S178'),
-	('P4384', 'Orange Peel Mask', 3.99, 'B1932', 'S172');
+	('P4384', 'Orange Peel Mask', 3.99, 'B1932', 'S172'),
 	('P7893', 'Argon Oil 1L', 20.99, 'B1893', 'S172'),
 	('P8238', 'Argon Oil 2L', 25.99, 'B1893', 'S172'),
 	('P9898', 'Argon Oil 3L', 30.99, 'B1893', 'S172'),
 	('P2387', 'Argon Oil 1L', 20.99, 'B1893', 'S178'),
-	('P8423', 'Argon Oil 2L', 25.99, 'B1893', 'S178');
+	('P8423', 'Argon Oil 2L', 25.99, 'B1893', 'S178'),
 	('P9128', 'Lavendar Conditioner 1L', 20.99, 'B2323', 'S172'),
 	('P3826', 'Lavendar Conditioner 2L', 25.99, 'B2323', 'S172'),
 	('P2633', 'Lavendar Conditioner 1L', 20.99, 'B2323', 'S178'),
-	('P4842', 'Lavendar Conditioner 2L', 25.99, 'B2323', 'S178');
+	('P4842', 'Lavendar Conditioner 2L', 25.99, 'B2323', 'S178'),
 	('P3278', 'Black Bean Mask', 2.99, 'B2109', 'S172'),
 	('P3623', 'Rosemary Wipe Mask', 1.99, 'B2323', 'S172'),
 	('P3923', 'Black Bean Mask', 3.99, 'B2109', 'S178'),
-	('P2923', 'Rosemary Wipe Mask', 2.99, 'B2323', 'S178');
+	('P2923', 'Rosemary Wipe Mask', 2.99, 'B2323', 'S178'),
 	('P3729', 'Sunflower Conditioner', 12.99, 'B1932', 'S172'),
 	('P8233', 'Blueberry Oil 1L', 5.99, 'B2109', 'S178'),
-	('P9472', 'Blueberry Oil 2L', 5.99, 'B2109', 'S172');
+	('P9472', 'Blueberry Oil 2L', 5.99, 'B2109', 'S172'),
 	('P3293', 'Coconut Hair Styler', 10.99, 'B2109', 'S172'),
 	('P8443', 'Coconut Hair Styler', 10.99, 'B2109', 'S178'),	
 	('P2378', 'Blackberry Oil 1L', 5.99, 'B2109', 'S178'),
-	('P3287', 'Blackberry Oil 2L', 10.99, 'B2109', 'S172');
+	('P3287', 'Blackberry Oil 2L', 10.99, 'B2109', 'S172'),
 	('P3290', 'Argon Oil 2L', 26.99, 'B1893', 'S129'),
 	('P9234', 'Argon Oil 3L', 31.99, 'B1893', 'S129'),
 	('P8348', 'Argon Oil 1L', 15.99, 'B1893', 'S236'),
@@ -229,20 +229,22 @@ SELECT * FROM product;
 
 CREATE TABLE orders(
 	order_id				VARCHAR(10) PRIMARY KEY,
-	product_id			VARCHAR(10),
-	salon_id				VARCHAR(10),		
+	product_id			VARCHAR(10) NOT NULL,
+	salon_id				VARCHAR(10) NOT NULL,		
 	quantity				INT NOT NULL,		
 	total_price			DOUBLE DEFAULT 0.00,
-	FOREIGN KEY( order_id ) REFERENCES customer( order_id ) ON DELETE CASCADE,
+	FOREIGN KEY( product_id ) REFERENCES product( product_id ) ON DELETE CASCADE,
 	FOREIGN KEY( salon_id ) REFERENCES salon( salon_id ) ON DELETE CASCADE
 );
+
+SELECT * FROM orders;
 
 /* Add orders */
 INSERT INTO orders(order_id, product_id, salon_id, quantity) VALUES
 	('O1128', 'P9121', 'S172', 2),
 	('O1198', 'P5233', 'S178', 5),
 	('O2132', 'P5883', 'S178', 3),
-	('O2321', 'P9121', 'S172', 1);
+	('O2321', 'P9121', 'S172', 1),
 	('O4634', 'P8423', 'S178', 4),
 	('O4312', 'P3682', 'S236', 3),
 	('O3923', 'P8423', 'S178', 3),
@@ -262,7 +264,7 @@ INSERT INTO orders(order_id, product_id, salon_id, quantity) VALUES
 	('O5317','P3792', 'S129', 5),
 	('O7311','P2632', 'S129', 4),
 	('O0871','P3792', 'S129', 5),
-	('O1001','P2632', 'S129', 5);
+	('O1001','P2632', 'S129', 5),
 	('O3283','P9234', 'S129', 2),
 	('O7771','P3293', 'S172', 3),
 	('O2812','P8120', 'S129', 4),
