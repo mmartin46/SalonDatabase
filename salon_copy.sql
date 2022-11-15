@@ -44,7 +44,7 @@ INSERT INTO customer VALUES
 	('C87329', 'Paul', 'James', 'Y', 'O0091', '469-678-2183'),
 	('C09389', 'Simon', 'Carter', 'Y', 'O9271', '345-212-1232'),
 	('C10920', 'James', 'Patner', 'Y', 'O0917', '456-789-1109'),
-	('C09283', 'Merlyn', 'Paula', 'N', 'O3100', '214-928-1000');
+	('C09283', 'Merlyn', 'Paula', 'N', 'O3100', '214-928-1000'),
 	('C78833', 'Kernal', 'Brown', 'Y', 'O3400', '212-200-1009'),
 	('C73023', 'Barbara', 'Patt', 'N', 'O4001', '251-192-1092'),
 	('C63282', 'Kate', 'Patty', 'N', 'O9278', '213-198-1099'),
@@ -241,9 +241,9 @@ SELECT * FROM product;
 CREATE TABLE orders(
 	order_id				VARCHAR(10) PRIMARY KEY,
 	product_id			VARCHAR(10) NOT NULL,
-	salon_id				VARCHAR(10) NOT NULL,		
-	quantity				INT NOT NULL,		
-	total_price			DOUBLE DEFAULT 0.00,
+	salon_id				VARCHAR(10) NOT NULL,	
+	quantity				INT NOT NULL,	
+	total_price			DOUBLE DEFAULT 0.00,		
 	FOREIGN KEY( product_id ) REFERENCES product( product_id ) ON DELETE CASCADE,
 	FOREIGN KEY( salon_id ) REFERENCES salon( salon_id ) ON DELETE CASCADE
 );
@@ -330,25 +330,74 @@ ORDER BY salon.salon_id;
 
 SELECT * FROM customer;
 
+
+
+/* Applies membership discount */
+CREATE PROCEDURE applyMembershipDiscount()
+BEGIN
+	UPDATE orders
+	SET orders.total_price = 0.9 * orders.total_price
+	WHERE orders.order_id IN (
+		SELECT customer.order_id FROM customer
+		WHERE customer.has_membership = 'Y'
+	);
+END;
+
 /* Shows order prices */
 CREATE PROCEDURE showOrderTotals()
 BEGIN
-	SELECT orders.order_id, orders.product_id, orders.salon_id, orders.total_price 
-	+ (product.price * orders.quantity)
-	AS real_price,
-	orders.quantity
-	FROM orders INNER JOIN
-	product ON product.product_id = orders.product_id;
+	CREATE TABLE temp_table(
+		order_id				VARCHAR(10) PRIMARY KEY,
+		product_id			VARCHAR(10) NOT NULL,
+		salon_id				VARCHAR(10) NOT NULL,		
+		quantity				INT NOT NULL,		
+		total_price			DOUBLE DEFAULT 0.00,
+		FOREIGN KEY( product_id ) REFERENCES product( product_id ) ON DELETE CASCADE,
+		FOREIGN KEY( salon_id ) REFERENCES salon( salon_id ) ON DELETE CASCADE
+	);
+
+	INSERT INTO temp_table
+		SELECT orders.order_id, orders.product_id, orders.salon_id, orders.quantity,
+		orders.total_price 
+		+ (product.price * orders.quantity) AS total_price
+		FROM orders INNER JOIN
+		product ON product.product_id = orders.product_id;
+	
+	TRUNCATE orders;
+	INSERT INTO orders 
+		SELECT * FROM temp_table;
+	
+	CALL applyMembershipDiscount();
+	
+	UPDATE orders
+	SET orders.total_price = ROUND(orders.total_price, 2);
+	
+	DROP TABLE temp_table;
 END;
 
 CALL showOrderTotals();
 
+/* Shows each brand's revenue */
 CREATE PROCEDURE showBrandRevenue()
 BEGIN
-	SELECT brand_name, SUM(product.price) * orders.quantity FROM orders 
-	INNER JOIN product ON product.product_id = orders.product_id
-	INNER JOIN brand ON brand.brand_id = product.brand_id
-	GROUP BY brand_name;
+	CREATE TABLE temp_table(
+		brand_id			VARCHAR(10) PRIMARY KEY,
+		brand_name		VARCHAR(30),
+		revenue			DOUBLE DEFAULT 0.00
+	);
+
+	INSERT INTO temp_table
+		SELECT brand.brand_id, brand_name, ROUND(SUM(product.price) * orders.quantity, 2) FROM orders 
+		INNER JOIN product ON product.product_id = orders.product_id
+		INNER JOIN brand ON brand.brand_id = product.brand_id
+		GROUP BY brand_name;
+		
+	REPLACE INTO brand
+		SELECT * FROM temp_table;
+		
+	SELECT * FROM brand;
+	
+	DROP TABLE temp_table;
 END;
 
-SELECT * FROM product;
+
