@@ -414,7 +414,16 @@ ORDER BY salon.salon_id;
 # Procedures
 /*------------------------------------------*/
 
+/* Counts the amount of orders placed for a specified product. */
+CREATE PROCEDURE purchaseCount(IN p_name VARCHAR(60))
+BEGIN
+	SELECT product_name, COUNT(orders.order_id) + quantity AS p_count FROM product
+	INNER JOIN orders ON product.product_id = orders.product_id
+	WHERE product_name = p_name;
+END;
 
+CALL purchaseCount('Argon Oil 1L');
+CALL purchaseCount('Lavendar Conditioner 1L');
 
 /* select the number of orders each customer has placed. */
 CREATE PROCEDURE customerFreq()
@@ -495,4 +504,3 @@ BEGIN
 END;
 
 CALL showBrandRevenue();
-
