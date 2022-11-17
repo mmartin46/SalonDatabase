@@ -51,8 +51,29 @@ INSERT INTO customer VALUES
 	('C80000', 'Josh', 'Perry', 'Y', 'O0081', '461-198-1929'),
 	('C01797', 'Paren', 'Sore', 'N', 'O8009', '345-901-1029'),
 	('C67333', 'Jaren', 'Martinez', 'Y', 'O8371', '102-209-1029'),
-	('C89900', 'Lauren', 'Baker', 'N', 'O9291', '234-109-1109');
-
+	('C89900', 'Lauren', 'Baker', 'N', 'O9291', '234-109-1109'),
+	('C95611', 'Jacob', 'Wallace', 'N', 'O7888', '213-556-1109'),
+	('C95613', 'Mark', 'Thomas', 'Y', 'O7222', '415-110-1099'),
+	('C95615', 'Kart', 'Jon', 'Y', 'O7223', '452-123-1222'),
+	('C95618', 'Patt', 'George', 'N', 'O7225', '456-821-1009'),
+	('C95620', 'Rad', 'Josh', 'N', 'O6788', '234-555-1098'),
+	('C95622', 'Kary', 'Bob', 'N', 'O6799', '213-301-1000'),
+	('C96624', 'Elizabeth', 'Berry', 'Y', 'O8399', '215-619-1009'),
+	('C96626', 'Rachel', 'Kate', 'N', 'O8902', '215-610-1008'),
+	('C10441', 'Kary', 'Bob', 'N', 'O9010', '213-301-1000'),
+	('C10445', 'Kary', 'Bob', 'N', 'O9011', '213-301-1000'),
+	('C10668', 'Berry', 'Karen', 'Y', 'O4200', '561-108-1009');
+	
+INSERT INTO customer VALUES
+	('C40088', 'Karly', 'Gater', 'N', 'O9001', '340-100-9099'),
+	('C40090', 'Bailey', 'Warren', 'Y', 'O9003', '412-809-1109'),
+	('C40092', 'Hailey', 'Ball', 'Y', 'O9005', '310-910-0091'),
+	('C40094', 'Kathy', 'Base', 'N', 'O9006', '410-010-9100'),
+	('C60091', 'Jennice', 'Parry', 'Y', 'O9009', '610-199-1009'),
+	('C60093', 'Pary', 'Jerry', 'N', 'O9000', '720-100-9111'),
+	('C60095', 'Kathy', 'Mist', 'N', 'O9013', '812-290-1109'),
+	('C60097', 'Berry', 'Jessica', 'Y', 'O9015', '910-819-1190'),
+	('C60099', 'Lauren', 'Kate', 'N', 'O9017', '814-910-9010');
 
 SELECT * FROM customer
 ORDER BY first_name;
@@ -71,7 +92,8 @@ INSERT INTO brand(brand_id, brand_name) VALUES
 	('B2109', 'Coco Bananas'),
 	('B1932', 'Jobo Bojo'),
 	('B1893', 'Argon Scents'),
-	('B2323', 'Caramel Crayonz');
+	('B2323', 'Caramel Crayonz'),
+	('B5000', 'Just Roots');
 
 CREATE TABLE salon(
 	salon_id			VARCHAR(10) PRIMARY KEY,
@@ -84,7 +106,9 @@ INSERT INTO salon VALUES
 	('S172', 'Curls of Curls', 'Austin', 'TX'),
 	('S178', 'Hair Fundamemtals', 'Dallas', 'TX'),
 	('S129', 'Full of Coils', 'New Orleans', 'LA'),
-	('S236', 'Olive Sisters', 'Bossier City', 'LA'); 
+	('S236', 'Olive Sisters', 'Bossier City', 'LA'),
+	('S819', 'Root Care', 'Santa Fe', 'NM');
+
 	
 SELECT * FROM salon;
 
@@ -100,6 +124,9 @@ INSERT INTO management VALUES
 	('M184', 'Jones Coins', 'S178'),
 	('M923', 'Pauline Sam', 'S129'),
 	('M912', 'Michelle Pink', 'S236');
+	
+INSERT INTO management VALUES
+	('M906', 'Barbara Hall', 'S819');
 
 CREATE TABLE staff(
 	staff_id			VARCHAR(10) PRIMARY KEY,
@@ -146,9 +173,6 @@ INSERT INTO staff VALUES
 	('W28989', 'Launa', 'Prone', 31900.99, 'M184', 'Stocker', '080000', '110000'),
 	('W89123', 'Rema', 'Crystal', 45000.00, 'M184', 'Stylist', '080000', '120000'),
 	('W93288', 'Paula', 'Orlando', 42000.00, 'M184', 'Stylist', '120000', '150000'); 
-
-
-SELECT * FROM staff;
 	
 INSERT INTO staff VALUES
 	('W98238', 'Monice', 'Booker', 28330.99, 'M923', 'Cashier', '070000', '110000'),
@@ -169,9 +193,21 @@ INSERT INTO staff VALUES
 	('W39232', 'Raula', 'Bail', 65000.00, 'M912', 'Jr. Manager', '120000', '150000'),
 	('W29393', 'Abagail', 'Rain', 40000.00, 'M912', 'Stylist', '070000', '120000'),
 	('W92833', 'Megan', 'Kite', 40000.00, 'M912', 'Stylist', '120000', '150000');  
-	
+
+INSERT INTO staff VALUES
+	('W01999', 'Yuna', 'Jessica', 31000.00, 'M906', 'Cashier', '060000', '110000'),
+	('W02001', 'Perl', 'Willow', 31000.00, 'M906', 'Cashier', '110000', '160000'),
+	('W02003', 'Kate', 'Pill', 34000.00, 'M906', 'Cleaner', '060000', '120000'),
+	('W02005', 'Josh', 'Karter', 35000.00, 'M906', 'Cleaner', '120000', '160000'),
+	('W02007', 'Bird', 'Katy', 69000.00, 'M906', 'Jr. Manager', '050000', '100000'),
+	('W02009', 'Berlyn', 'Martinez', 70000.00, 'M906', 'Jr.Manager', '100000', '160000'),
+	('W02011', 'Karly', 'Merry', 41000.00, 'M906', 'Stylist', '060000', '120000'),
+	('W02013', 'Jerry', 'Taylor', 41500.00, 'M906', 'Stylist', '120000', '160000');
+
 SELECT * FROM staff
 WHERE manage_id = 'M184';
+
+SELECT * FROM staff;
 
 
 CREATE TABLE product(
@@ -232,9 +268,35 @@ INSERT INTO product VALUES
 	('P8239', 'Rosemary Wipe Mask', 4.99, 'B2323', 'S236'),
 	('P2364', 'Black Bean Mask', 3.99, 'B2109', 'S236'),
 	('P2632', 'Rosemary Wipe Mask', 3.99, 'B2323', 'S129'),
-	('P3792', 'Sunflower Conditioner', 11.99, 'B1932', 'S129');
+	('P3792', 'Sunflower Conditioner', 11.99, 'B1932', 'S129'),
+	('P6005', 'Joboja Oil 2L', 13.99, 'B1932', 'S819'),
+	('P6007', 'Pure Jamaican Oil 1L', 4.99, 'B1932', 'S819'),
+	('P6009', 'Orange Peel Mask', 4.99, 'B1932', 'S819'),
+	('P6010', 'Argon Oil 1L', 19.99, 'B1893', 'S819'),
+	('P6013', 'Argon Oil 3L', 30.99, 'B1893', 'S819'),
+	('P6019', 'Argon Oil 2L', 25.99, 'B1893', 'S819'),
+	('P6020', 'Blossom Conditioner 1L', 20.99, 'B2323', 'S819'),
+	('P6090', 'Blossom Conditioner 2L', 25.99, 'B2323', 'S819'),
+	('P6100', 'Olive Conditioner 1L', 9.99, 'B1182', 'S819'),
+	('P6102', 'Extra Virgin Olive Oil 1L', 21.99, 'B1182', 'S819'),
+	('P6109', 'Pure Olive Oil 1L', 15.99, 'B1932', 'S819'),
+	('P6190', 'Peeled Banana Mask', 4.99, 'B2109', 'S819');
+	
+	
+INSERT INTO product VALUES
+	('P9000', 'Deep Moisturizing Sunflower Spray 1L', 10.99, 'B5000', 'S819'),
+	('P9002', 'Deep Moisturizing Sunflower Spray 2L', 15.99, 'B5000', 'S819'),
+	('P9004', 'Rosemary & Coconut Oil Mist 1L', 7.99, 'B5000', 'S819'),
+	('P9006', 'Rosemary & Coconut Oil Mist 2L', 10.99, 'B5000', 'S819'),
+	('P9007', 'Coconut & Olive Oil Mix 1L', 20.99, 'B5000', 'S819'),
+	('P9011', 'Joboja Deep Root Conditioner', 14.99, 'B5000', 'S819'),
+	('P9012', 'Joboja Hair Mist 2L', 20.99, 'B5000', 'S819'),
+	('P9015', 'Joboja Hair Mist 4L', 40.99, 'B5000', 'S819'),
+	('P9022', 'Olive Oil Hair Balm', 5.99, 'B5000', 'S819'); 
 
-SELECT * FROM product;
+SELECT * FROM product
+INNER JOIN salon ON product.salon_id = salon.salon_id
+WHERE salon.salon_id = 'S172';
 
 /* Create orders */
 
@@ -302,7 +364,27 @@ INSERT INTO orders(order_id, product_id, salon_id, quantity) VALUES
 	('O0081','P5883','S178', 3),
 	('O8009','P2632','S129', 3),
 	('O8371','P5883','S178', 8),
-	('O9291','P6238','S129', 1);
+	('O9291','P6238','S129', 1),
+	('O7888','P6109','S819', 2),
+	('O7222','P6100','S819', 3),
+	('O7223','P6190','S819', 6),
+	('O7225','P6010','S819', 3),
+	('O6788','P6013','S819', 4),
+	('O6799','P6020','S819', 2),
+	('O8399','P6020','S819', 4),
+	('O8902','P6020','S819', 1),
+	('O9010','P6019','S819', 1),
+	('O9011','P6013','S819', 5),
+	('O4200','P6009','S819', 2),
+	('O9001','P9000','S819', 3),
+	('O9003','P9002','S819', 2),
+	('O9005','P9004','S819', 1),
+	('O9006','P9004','S819', 5),
+	('O9009','P9011','S819', 6),
+	('O9000','P9022','S819', 3),
+	('O9013','P9011','S819', 3),
+	('O9015','P9015','S819', 2),
+	('O9017','P9002','S819', 8);
 
 SELECT * FROM orders;
 
@@ -328,9 +410,21 @@ ORDER BY salon.salon_id;
 
 
 
-SELECT * FROM customer;
+
+# Procedures
+/*------------------------------------------*/
 
 
+
+/* select the number of orders each customer has placed. */
+CREATE PROCEDURE customerFreq()
+BEGIN
+	SELECT customer.first_name, customer.last_name, COUNT(customer.phone_number)
+	FROM customer
+	GROUP BY customer.phone_number;
+END;
+
+CALL customerFreq();
 
 /* Applies membership discount */
 CREATE PROCEDURE applyMembershipDiscount()
@@ -400,4 +494,5 @@ BEGIN
 	DROP TABLE temp_table;
 END;
 
+CALL showBrandRevenue();
 
