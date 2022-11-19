@@ -1,4 +1,5 @@
 /* John 3:16 */
+
 CREATE TABLE customer(
 	customer_id			VARCHAR(15) PRIMARY KEY,
 	first_name			VARCHAR(20),
@@ -62,9 +63,7 @@ INSERT INTO customer VALUES
 	('C96626', 'Rachel', 'Kate', 'N', 'O8902', '215-610-1008'),
 	('C10441', 'Kary', 'Bob', 'N', 'O9010', '213-301-1000'),
 	('C10445', 'Kary', 'Bob', 'N', 'O9011', '213-301-1000'),
-	('C10668', 'Berry', 'Karen', 'Y', 'O4200', '561-108-1009');
-	
-INSERT INTO customer VALUES
+	('C10668', 'Berry', 'Karen', 'Y', 'O4200', '561-108-1009'),
 	('C40088', 'Karly', 'Gater', 'N', 'O9001', '340-100-9099'),
 	('C40090', 'Bailey', 'Warren', 'Y', 'O9003', '412-809-1109'),
 	('C40092', 'Hailey', 'Ball', 'Y', 'O9005', '310-910-0091'),
@@ -73,7 +72,13 @@ INSERT INTO customer VALUES
 	('C60093', 'Pary', 'Jerry', 'N', 'O9000', '720-100-9111'),
 	('C60095', 'Kathy', 'Mist', 'N', 'O9013', '812-290-1109'),
 	('C60097', 'Berry', 'Jessica', 'Y', 'O9015', '910-819-1190'),
-	('C60099', 'Lauren', 'Kate', 'N', 'O9017', '814-910-9010');
+	('C60099', 'Lauren', 'Kate', 'N', 'O9017', '814-910-9010'),
+	('C51002', 'Ned', 'Jones', 'N', 'O5100', '234-120-1009'),
+	('C51003', 'Larry', 'Josh', 'N', 'O5102', '310-401-1002'),
+	('C51005', 'Harley', 'Hernandez', 'Y', 'O5104', '567-903-1022'),
+	('C51007', 'Kevin', 'Loans', 'Y', 'O5106', '436-708-2302'),
+	('C51009', 'Mary', 'Wastern', 'N', 'O5108', '782-220-1110');
+
 
 SELECT * FROM customer
 ORDER BY first_name;
@@ -93,7 +98,8 @@ INSERT INTO brand(brand_id, brand_name) VALUES
 	('B1932', 'Jobo Bojo'),
 	('B1893', 'Argon Scents'),
 	('B2323', 'Caramel Crayonz'),
-	('B5000', 'Just Roots');
+	('B5000', 'Just Roots'),
+	('B6000', 'Scalp Management');
 
 CREATE TABLE salon(
 	salon_id			VARCHAR(10) PRIMARY KEY,
@@ -123,9 +129,7 @@ INSERT INTO management VALUES
 	('M118', 'Samuel Parker', 'S172'),
 	('M184', 'Jones Coins', 'S178'),
 	('M923', 'Pauline Sam', 'S129'),
-	('M912', 'Michelle Pink', 'S236');
-	
-INSERT INTO management VALUES
+	('M912', 'Michelle Pink', 'S236'),
 	('M906', 'Barbara Hall', 'S819');
 
 CREATE TABLE staff(
@@ -280,10 +284,14 @@ INSERT INTO product VALUES
 	('P6100', 'Olive Conditioner 1L', 9.99, 'B1182', 'S819'),
 	('P6102', 'Extra Virgin Olive Oil 1L', 21.99, 'B1182', 'S819'),
 	('P6109', 'Pure Olive Oil 1L', 15.99, 'B1932', 'S819'),
-	('P6190', 'Peeled Banana Mask', 4.99, 'B2109', 'S819');
-	
-	
-INSERT INTO product VALUES
+	('P6190', 'Peeled Banana Mask', 4.99, 'B2109', 'S819'),
+	('P5050', 'Joboja Conditioner 1L', 14.99, 'B6000', 'S129'),
+	('P5052', 'Joboja Conditioner 1L', 13.99, 'B6000', 'S819'),
+	('P5053', 'Joboja Conditioner 2L', 24.99, 'B6000', 'S129'),
+	('P5054', 'Joboja Conditioner 2L', 25.99, 'B6000', 'S819'),
+	('P5056', 'Scalp Shampoo 2L', 10.99, 'B6000', 'S819'),
+	('P5059', 'Scalp Shampoo 1L', 5.00, 'B6000', 'S819'),
+	('P5061', 'Almond Butter Hair Cream', 10.99, 'B6000', 'S129'),
 	('P9000', 'Deep Moisturizing Sunflower Spray 1L', 10.99, 'B5000', 'S819'),
 	('P9002', 'Deep Moisturizing Sunflower Spray 2L', 15.99, 'B5000', 'S819'),
 	('P9004', 'Rosemary & Coconut Oil Mist 1L', 7.99, 'B5000', 'S819'),
@@ -384,7 +392,12 @@ INSERT INTO orders(order_id, product_id, salon_id, quantity) VALUES
 	('O9000','P9022','S819', 3),
 	('O9013','P9011','S819', 3),
 	('O9015','P9015','S819', 2),
-	('O9017','P9002','S819', 8);
+	('O9017','P9002','S819', 8),
+	('O5100','P5061','S129', 2),
+	('O5102','P5056','S819', 5),
+	('05104','P5059','S819', 3),
+	('O5106','P5056','S819', 4),
+	('O5108','P5052','S819', 4);
 
 SELECT * FROM orders;
 
@@ -408,7 +421,13 @@ SELECT * FROM product
 INNER JOIN salon ON salon.salon_id = product.salon_id
 ORDER BY salon.salon_id; 
 
+/* Select all the staff that clock in after 8 am*/
+SELECT staff.first_name, staff.last_name, staff.clock_in FROM staff
+INNER JOIN management ON management.manage_id = management.manage_id
+WHERE management.manager_name LIKE '%Barbara%' AND staff.clock_in > '08:00:00';
 
+SELECT * FROM customer
+ORDER BY customer.customer_id ASC;
 
 
 # Procedures
@@ -466,19 +485,21 @@ BEGIN
 		FROM orders INNER JOIN
 		product ON product.product_id = orders.product_id;
 	
-	TRUNCATE orders;
-	INSERT INTO orders 
+	REPLACE INTO orders 
 		SELECT * FROM temp_table;
 	
 	CALL applyMembershipDiscount();
 	
 	UPDATE orders
-	SET orders.total_price = ROUND(orders.total_price, 2);
+	SET orders.total_price = ROUND(orders.total_price, 2)
+	WHERE orders.order_id IS NOT NULL;
 	
 	DROP TABLE temp_table;
 END;
 
 CALL showOrderTotals();
+
+# ROLLBACK
 
 /* Shows each brand's revenue */
 CREATE PROCEDURE showBrandRevenue()
