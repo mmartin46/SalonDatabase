@@ -1,4 +1,3 @@
-/* John 3:16 */
 
 DROP DATABASE test_me;
 CREATE DATABASE test_me;
@@ -201,7 +200,7 @@ INSERT INTO staff VALUES
 	('W02003', 'Kate', 'Pill', 34000.00, 'M906', 'Cleaner', '060000', '120000'),
 	('W02005', 'Josh', 'Karter', 35000.00, 'M906', 'Cleaner', '120000', '160000'),
 	('W02007', 'Bird', 'Katy', 69000.00, 'M906', 'Jr. Manager', '050000', '100000'),
-	('W02009', 'Berlyn', 'Martinez', 70000.00, 'M906', 'Jr.Manager', '100000', '160000'),
+	('W02009', 'Berlyn', 'Martinez', 70000.00, 'M906', 'Jr. Manager', '100000', '160000'),
 	('W02011', 'Karly', 'Merry', 41000.00, 'M906', 'Stylist', '060000', '120000'),
 	('W02013', 'Jerry', 'Taylor', 41500.00, 'M906', 'Stylist', '120000', '160000');
 
