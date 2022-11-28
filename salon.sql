@@ -486,4 +486,12 @@ BEGIN
 	SET foreign_key_checks = 1;
 END;
 
+/* Shows the revenue at each salon.*/
+CREATE PROCEDURE showSalonRevenue()
+BEGIN
+	SELECT salon.salon_name, ROUND(SUM(orders.total_price), 2) AS salon_profit FROM salon
+	INNER JOIN orders ON orders.salon_id = salon.salon_id
+	GROUP BY salon.salon_name;
+END;
+
 CALL showBrandRevenue();
