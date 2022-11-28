@@ -479,11 +479,6 @@ BEGIN
 	
 	RENAME TABLE brand TO ignore_this;
 	RENAME TABLE temp_table TO brand;
-	
-	SELECT * FROM orders;
-	SELECT * FROM product;
-		
-	SELECT * FROM brand;
 END;
 
 CALL showBrandRevenue();
