@@ -1,5 +1,10 @@
 /* John 3:16 */
 
+DROP DATABASE test_me;
+CREATE DATABASE test_me;
+USE test_me;
+
+
 CREATE TABLE customer(
 	customer_id			VARCHAR(15) PRIMARY KEY,
 	first_name			VARCHAR(20),
@@ -80,17 +85,12 @@ INSERT INTO customer VALUES
 	('C51009', 'Mary', 'Wastern', 'N', 'O5108', '782-220-1110');
 
 
-SELECT * FROM customer
-ORDER BY first_name;
-
 CREATE TABLE brand(
 	brand_id			VARCHAR(10) PRIMARY KEY,
 	brand_name		VARCHAR(30),
 	revenue			DOUBLE DEFAULT 0.00
 );
 
-
-SELECT * FROM brand;
 
 INSERT INTO brand(brand_id, brand_name) VALUES
 	('B1182', 'Olive Branch'),
@@ -114,9 +114,6 @@ INSERT INTO salon VALUES
 	('S129', 'Full of Coils', 'New Orleans', 'LA'),
 	('S236', 'Olive Sisters', 'Bossier City', 'LA'),
 	('S819', 'Root Care', 'Santa Fe', 'NM');
-
-	
-SELECT * FROM salon;
 
 CREATE TABLE management(
 	manage_id		VARCHAR(5) PRIMARY KEY,
@@ -208,11 +205,6 @@ INSERT INTO staff VALUES
 	('W02011', 'Karly', 'Merry', 41000.00, 'M906', 'Stylist', '060000', '120000'),
 	('W02013', 'Jerry', 'Taylor', 41500.00, 'M906', 'Stylist', '120000', '160000');
 
-SELECT * FROM staff
-WHERE manage_id = 'M184';
-
-SELECT * FROM staff;
-
 
 CREATE TABLE product(
 	product_id			VARCHAR(20) PRIMARY KEY,
@@ -302,9 +294,6 @@ INSERT INTO product VALUES
 	('P9015', 'Joboja Hair Mist 4L', 40.99, 'B5000', 'S819'),
 	('P9022', 'Olive Oil Hair Balm', 5.99, 'B5000', 'S819'); 
 
-SELECT * FROM product
-INNER JOIN salon ON product.salon_id = salon.salon_id
-WHERE salon.salon_id = 'S172';
 
 /* Create orders */
 
@@ -318,7 +307,6 @@ CREATE TABLE orders(
 	FOREIGN KEY( salon_id ) REFERENCES salon( salon_id ) ON DELETE CASCADE
 );
 
-SELECT * FROM orders;
 
 /* Add orders */
 INSERT INTO orders(order_id, product_id, salon_id, quantity) VALUES
@@ -399,35 +387,6 @@ INSERT INTO orders(order_id, product_id, salon_id, quantity) VALUES
 	('O5106','P5056','S819', 4),
 	('O5108','P5052','S819', 4);
 
-SELECT * FROM orders;
-
-/* Examples */
-
-# Find all staff working for Jones Coins who have a salary
-# less than 35,000
-SELECT * FROM staff
-INNER JOIN management ON management.manage_id = staff.manage_id
-WHERE management.manager_name LIKE '%Coins' AND staff.salary < 35000;
-
-
-# Select all the products made by Jobo Bojo
-SELECT * FROM product
-INNER JOIN brand ON brand.brand_id = product.brand_id
-WHERE brand.brand_name LIKE '%Bojo%';
-
-
-/* check products from each branch */
-SELECT * FROM product
-INNER JOIN salon ON salon.salon_id = product.salon_id
-ORDER BY salon.salon_id; 
-
-/* Select all the staff that clock in after 8 am*/
-SELECT staff.first_name, staff.last_name, staff.clock_in FROM staff
-INNER JOIN management ON management.manage_id = management.manage_id
-WHERE management.manager_name LIKE '%Barbara%' AND staff.clock_in > '08:00:00';
-
-SELECT * FROM customer
-ORDER BY customer.customer_id ASC;
 
 
 # Procedures
@@ -468,6 +427,7 @@ END;
 /* Shows order prices */
 CREATE PROCEDURE showOrderTotals()
 BEGIN
+	DROP TABLE IF EXISTS temp_table;
 	CREATE TABLE temp_table(
 		order_id				VARCHAR(10) PRIMARY KEY,
 		product_id			VARCHAR(10) NOT NULL,
@@ -484,6 +444,7 @@ BEGIN
 		+ (product.price * orders.quantity) AS total_price
 		FROM orders INNER JOIN
 		product ON product.product_id = orders.product_id;
+		
 	
 	REPLACE INTO orders 
 		SELECT * FROM temp_table;
@@ -493,17 +454,17 @@ BEGIN
 	UPDATE orders
 	SET orders.total_price = ROUND(orders.total_price, 2)
 	WHERE orders.order_id IS NOT NULL;
-	
-	DROP TABLE temp_table;
 END;
 
 CALL showOrderTotals();
+
 
 # ROLLBACK
 
 /* Shows each brand's revenue */
 CREATE PROCEDURE showBrandRevenue()
 BEGIN
+	DROP TABLE IF EXISTS temp_table;
 	CREATE TABLE temp_table(
 		brand_id			VARCHAR(10) PRIMARY KEY,
 		brand_name		VARCHAR(30),
@@ -515,13 +476,14 @@ BEGIN
 		INNER JOIN product ON product.product_id = orders.product_id
 		INNER JOIN brand ON brand.brand_id = product.brand_id
 		GROUP BY brand_name;
-		
-	REPLACE INTO brand
-		SELECT * FROM temp_table;
+	
+	RENAME TABLE brand TO ignore_this;
+	RENAME TABLE temp_table TO brand;
+	
+	SELECT * FROM orders;
+	SELECT * FROM product;
 		
 	SELECT * FROM brand;
-	
-	DROP TABLE temp_table;
 END;
 
 CALL showBrandRevenue();
