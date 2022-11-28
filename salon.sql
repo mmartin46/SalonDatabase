@@ -472,13 +472,18 @@ BEGIN
 	);
 
 	INSERT INTO temp_table
-		SELECT brand.brand_id, brand_name, ROUND(SUM(product.price) * orders.quantity, 2) FROM orders 
+		SELECT brand.brand_id, brand_name, ROUND(SUM(product.price) * orders.quantity, 2) AS revenue FROM orders 
 		INNER JOIN product ON product.product_id = orders.product_id
 		INNER JOIN brand ON brand.brand_id = product.brand_id
 		GROUP BY brand_name;
+		
+	SET foreign_key_checks = 0;
 	
-	RENAME TABLE brand TO ignore_this;
-	RENAME TABLE temp_table TO brand;
+	TRUNCATE brand;	
+	INSERT INTO brand
+		SELECT * FROM temp_table;
+	
+	SET foreign_key_checks = 1;
 END;
 
 CALL showBrandRevenue();
